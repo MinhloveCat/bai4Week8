@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
 import java.io.File;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.nio.file.Paths;
+import java.nio.file.Path;
 
 public class FilePathTest {
 
@@ -9,10 +11,12 @@ public class FilePathTest {
         String folder = "logs";
         String fileName = "history.log";
 
-        String expectedPath = folder + "\\" + fileName;
+        Path expectedPath = Paths.get("logs", "history.log");
+        Path actualPath = Paths.get(folder, fileName);
 
-        File file = new File(folder, fileName);
 
-        assertEquals(expectedPath, file.getPath(), "The path is not available current OS");
+
+//        assertEquals(actualPath,expectedPath , "The path is not suitable for current OS");
+        assertEquals(expectedPath, actualPath,"Matching!!!");
     }
 }
